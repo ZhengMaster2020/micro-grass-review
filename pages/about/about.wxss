@@ -1,1 +1,56 @@
 /* pages/about/about.wxss */
+.header-about{
+  height: 25vh;
+  background-color: #44BB5C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-login{
+  width: 50vw;
+  color: #121212;
+  background: #fff;
+  border-radius: 25px;
+}
+.main-about-title{
+  display: block;
+  height: 60px;
+  width: 100vw;
+  background: #fff;
+  color: #121212;
+  font-size: 40rpx;
+  line-height: 60px;
+  margin-left: 40rpx;
+}
+.login-to{
+  font-size: 25rpx;
+  color: #c7c7c7;
+  float: right;
+  margin-right: 60rpx;
+}
+.login-to::after{
+  content: '>';
+  font-size: 30rpx;
+  margin-left: 10rpx;
+}
+image{
+  width: 40rpx;
+  height: 40rpx;
+}
+.bookmsg{
+  margin-bottom: 40rpx;
+  margin-left: 40rpx;
+}
+.bookmsg > view {
+  height: 60rpx;
+  margin-top: 26rpx;
+  color: #757575;
+  font-size: 32rpx;
+}
+.left-icon{
+  margin-right: 10rpx;
+}
+.right-arrow{
+  float: right;
+  margin-right: 20rpx;
+}

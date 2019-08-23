@@ -1,4 +1,40 @@
 <!--pages/about/about.wxml-->
-<view>
-  <text>pages/about/about.wxml</text>
+<view class="header-about">
+  <button class="btn-login">登  录</button>
+</view>
+<view class="main-about">
+  <text class="main-about-title">
+  <text>我的书评库</text>
+  <text class="login-to">登录查看</text>
+  </text>
+  <view>
+
+    <view class="bookmsg book-analysis">
+       <text>读书分析</text>
+       <view>
+        <image src="../../images/icon/shuji.png" class="left-icon"></image>
+        <text>120 评过</text>
+        <image src="../../images/icon/you.png" class="right-arrow"></image>
+       </view>
+    </view>
+
+     <view class="bookmsg">
+       <text>书籍收藏</text>
+       <view>
+        <image src="../../images/icon/shoucang.png" class="left-icon"></image>
+        <text>你收藏了 12 本书</text>
+         <image src="../../images/icon/you.png" class="right-arrow"></image>
+       </view>
+    </view>
+
+      <view class="bookmsg">
+       <text>最近浏览</text>
+       <view>
+        <image src="../../images/icon/liulan.png" class="left-icon" ></image>
+        <text>记录最近浏览 20 条记录</text>
+        <image src="../../images/icon/you.png" class="right-arrow"></image>
+       </view>
+    </view>
+
+  </view>
 </view>
