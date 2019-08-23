@@ -1,13 +1,36 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/list/list",
+    "pages/about/about"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "微书评",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#44BB5C",
+    "navigationBarTitleText": "微草书评",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home-actived.png"
+      },
+      {
+        "pagePath": "pages/list/list",
+        "text": "排行榜",
+        "iconPath": "images/icon/list.png",
+        "selectedIconPath": "images/icon/list-actived.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "我的",
+        "iconPath": "images/icon/aboutme.png",
+        "selectedIconPath": "images/icon/aboutme-actived.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }
