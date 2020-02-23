@@ -2,7 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/list/list",
-    "pages/about/about"
+    "pages/about/about",
+    "pages/details/detail",
+    "pages/search/search",
+    "pages/search_result/result",
+    "pages/topic/topic"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,8 +1,20 @@
 <!--index.wxml-->
 <view class="container">
-  <!-- search部分 -->
-  <van-search class="search-bar" value="{{value}}" placeholder="请输入搜索关键字" />
-  <!-- 轮播图部分 -->
+  <van-search
+    class="search-bar"
+    placeholder="请输入的书名或作者名"
+    placeholder-style="font-size:12px;"
+    shape="round"
+    input-align="center"
+    value="{{searchValue}}"
+    use-left-icon-slot
+    use-action-slot
+    bind:focus="toSearchPage"
+    bind:search="searchBook" >
+    <!-- <view slot="action" bind:tap="searchBook">搜索</view> -->
+    <van-icon class="search-icon" name="search" slot="left-icon" bind:click="searchBook"/>
+  </van-search>
+  <!-- 轮播图模块 Start -->
   <view>
     <view class="page-section page-section-spacing swiper">
       <swiper 
@@ -21,11 +33,12 @@
       </swiper>
     </view>
   </view>
+   <!-- 轮播图模块 End -->
 
-  <!-- 每日推荐模块主题内容 Start -->
+  <!-- 每日推荐模块 Start -->
   <view class="recommend-block">
     <van-divider customStyle="margin:10rpx 0 10rpx 40rpx; width:100vw; color: #eee; border-color: #eee;"/>
-    <van-button type="info" icon="good-job-o" size="small" round>每日推荐</van-button>
+    <van-button type="info" icon="good-job-o" size="small" round bind:click="toTopicBlock">每日推荐</van-button>
     <view class="book-img-warp" wx:for="{{swiperImg}}" wx:key="*this">
       <van-image
         class="book-img"
@@ -41,15 +54,16 @@
         <text slot="error">加载失败</text>
       </van-image>
       <view class="book-text">
-        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <rich-text nodes="{{bookNodes}}" bindtap="toDetial"></rich-text>
         <text class="book-outline">{{bookOutline}}</text>
       </view>   
     </view> 
   </view>
-  <!-- 每日推荐模块主题内容 End -->
+  <!-- 每日推荐模块 End -->
 
+  <!-- 热门书籍模块 Start -->
   <view class="recommend-block">
-    <van-button type="danger" icon="hot-o" size="small" round>热门书籍</van-button>
+    <van-button type="danger" icon="hot-o" size="small" round bind:click="toTopicBlock">热门书籍</van-button>
     <view class="book-img-warp">
       <van-image
         class="book-img"
@@ -65,7 +79,7 @@
         <text slot="error">加载失败</text>
       </van-image>
       <view class="book-text">
-        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <rich-text nodes="{{bookNodes}}" bindtap="toDetial"></rich-text>
         <text class="book-outline">{{bookOutline[1]}}</text>
       </view>   
     </view> 
@@ -84,12 +98,14 @@
         <text slot="error">加载失败</text>
       </van-image>
       <view class="book-text">
-        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <rich-text nodes="{{bookNodes}}" bindtap="toDetial"></rich-text>
         <text class="book-outline">{{bookOutline[1]}}</text>
       </view>   
     </view> 
   </view>
+  <!-- 热门书籍模块 End -->
 
+  <!-- 新书推荐模块 Start -->
   <view class="recommend-block">
     <van-button type="primary" icon="new-o" size="small" round>新书推荐</van-button>
     <view class="book-img-warp">
@@ -107,12 +123,14 @@
         <text slot="error">加载失败</text>
       </van-image>
       <view class="book-text">
-        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <rich-text nodes="{{bookNodes}}" bindtap="toDetial"></rich-text>
         <text class="book-outline">{{bookOutline[1]}}</text>
       </view>   
     </view> 
   </view>
+  <!-- 新书推荐模块 End -->
 
+  <!-- 经典书籍模块 Start -->
   <view class="recommend-block">
     <van-button type="warning" icon="flower-o" size="small" round>经典书籍</van-button>
     <view class="book-img-warp">
@@ -130,10 +148,12 @@
         <text slot="error">加载失败</text>
       </van-image>
       <view class="book-text">
-        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <rich-text nodes="{{bookNodes}}" bindtap="toDetial"></rich-text>
         <text class="book-outline">{{bookOutline[1]}}</text>
       </view>   
     </view> 
   </view>
-  <text class="not-more">已到底了哦</text>
+  <!-- 经典书籍模块 End -->
+
+  <text class="not-more">已到底了哦~</text>
 </view>

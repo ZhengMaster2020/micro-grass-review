@@ -23,7 +23,7 @@
 		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.0.4",
+	"libVersion": "2.10.1",
 	"appid": "wxd9dc6e0f4d7c80d6",
 	"projectname": "Microbook%20review",
 	"debugOptions": {

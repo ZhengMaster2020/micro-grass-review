@@ -1,10 +1,13 @@
 {
+  "component": true,
   "usingComponents": {
     "van-button": "@vant/weapp/button",
     "van-search": "@vant/weapp/search",
     "van-tag": "@vant/weapp/tag",
     "van-icon": "@vant/weapp/icon",
     "van-divider": "@vant/weapp/divider",
-    "van-image": "@vant/weapp/image"
+    "van-image": "@vant/weapp/image",
+    "van-field": "@vant/weapp/field",
+    "van-toast": "@vant/weapp/toast"
   }
 }

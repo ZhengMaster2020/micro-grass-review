@@ -11,6 +11,11 @@
   padding: 8rpx;
 }
 
+.search-icon {
+  margin: 4rpx 12rpx 0;
+  font-size: 28rpx;
+}
+
 .recommend-block {
   display: flex;
   align-items: center;
