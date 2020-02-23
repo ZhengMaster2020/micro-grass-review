@@ -1,3 +1,13 @@
 <view>
-  <text>this is list page</text>
+  <view>年度书籍排行榜</view>
+
+  <view>一月好评书籍榜</view>
+
+  <view>一周书籍排行榜</view>
+
+  <view>年度书籍排行榜</view>
+  
+  <view>好书推荐榜</view>
+
+  <view>电子书排行榜</view>
 </view>

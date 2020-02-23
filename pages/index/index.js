@@ -1,10 +1,60 @@
+var bookTitle = ['人类群星闪耀时', '追风筝的人']
+
+var outline = '《人类群星闪耀时》内容介绍：拜占廷的沦陷、亨徳尔的一生、一个流星般的天才、好不完美。描述了农村青年的奋斗生活以及感情经历。改革开放初期的不完美事物，完全爆率出社会百态生活'
+
+var outline1 = '《追风筝的人》12岁的阿富汗富家少爷阿米尔与仆人哈桑情同手足。然而，在一场风筝比赛后，发生了一件悲惨不堪的事，阿米尔为自己的懦弱感到自责和痛苦，逼走了哈桑，不久，自己也跟随父亲逃往美国。'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    bookOutline: [outline, outline1],
+    bookNodes: [{
+      name: 'a',
+      attrs: {
+        class: 'book_title',
+        style: 'color: #323233; font-size:13px;font-weight:bold;'
+      },
+      children: [{
+        type: 'text',
+        text: bookTitle[0]
+      }],
+    }],
+    tap() {
+      console.log('tap')
+    },
+    swiperImg: ["img-1", "img-2", "img-3", '4', '5'],
+    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
+    indicatorDots: true,
+    vertival: false,
+    autoplay: true,
+    interval: 2000,
+    duration: 500
+  },
+  changeIndicatorDots() {
+    this.setData({
+      indicatorDots: !this.data.indicatorDots
+    })
+  },
+
+  changeAutoplay() {
+    this.setData({
+      autoplay: !this.data.autoplay
+    })
+  },
+
+  intervalChange(e) {
+    this.setData({
+      interval: e.detail.value
+    })
+  },
+
+  durationChange(e) {
+    this.setData({
+      duration: e.detail.value
+    })
   },
 
   /**

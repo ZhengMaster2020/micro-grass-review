@@ -1,4 +1,139 @@
 <!--index.wxml-->
 <view class="container">
-  <text>this is index page</text>
+  <!-- search部分 -->
+  <van-search class="search-bar" value="{{value}}" placeholder="请输入搜索关键字" />
+  <!-- 轮播图部分 -->
+  <view>
+    <view class="page-section page-section-spacing swiper">
+      <swiper 
+        indicator-dots="{{indicatorDots}}" 
+        autoplay="{{autoplay}}" 
+        circular="{{circular}}" 
+        vertical="{{vertical}}" 
+        interval="{{interval}}" 
+        duration="{{duration}}" 
+        >
+        <block wx:for="{{background}}" wx:key="*this">
+          <swiper-item>
+            <view class="swiper-item {{item}}"></view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+  </view>
+
+  <!-- 每日推荐模块主题内容 Start -->
+  <view class="recommend-block">
+    <van-divider customStyle="margin:10rpx 0 10rpx 40rpx; width:100vw; color: #eee; border-color: #eee;"/>
+    <van-button type="info" icon="good-job-o" size="small" round>每日推荐</van-button>
+    <view class="book-img-warp" wx:for="{{swiperImg}}" wx:key="*this">
+      <van-image
+        class="book-img"
+        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        width="4rem"
+        height="6rem"
+        fit="cover"
+        lazy-load
+        show-error
+        show-loading
+        show-menu-by-longpress
+        use-error-slot>
+        <text slot="error">加载失败</text>
+      </van-image>
+      <view class="book-text">
+        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <text class="book-outline">{{bookOutline}}</text>
+      </view>   
+    </view> 
+  </view>
+  <!-- 每日推荐模块主题内容 End -->
+
+  <view class="recommend-block">
+    <van-button type="danger" icon="hot-o" size="small" round>热门书籍</van-button>
+    <view class="book-img-warp">
+      <van-image
+        class="book-img"
+        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        width="4rem"
+        height="6rem"
+        fit="cover"
+        lazy-load
+        show-error
+        show-loading
+        show-menu-by-longpress
+        use-error-slot>
+        <text slot="error">加载失败</text>
+      </van-image>
+      <view class="book-text">
+        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <text class="book-outline">{{bookOutline[1]}}</text>
+      </view>   
+    </view> 
+    <view class="book-img-warp">
+      <van-image
+        class="book-img"
+        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        width="4rem"
+        height="6rem"
+        fit="cover"
+        lazy-load
+        show-error
+        show-loading
+        show-menu-by-longpress
+        use-error-slot>
+        <text slot="error">加载失败</text>
+      </van-image>
+      <view class="book-text">
+        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <text class="book-outline">{{bookOutline[1]}}</text>
+      </view>   
+    </view> 
+  </view>
+
+  <view class="recommend-block">
+    <van-button type="primary" icon="new-o" size="small" round>新书推荐</van-button>
+    <view class="book-img-warp">
+      <van-image
+        class="book-img"
+        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        width="4rem"
+        height="6rem"
+        fit="cover"
+        lazy-load
+        show-error
+        show-loading
+        show-menu-by-longpress
+        use-error-slot>
+        <text slot="error">加载失败</text>
+      </van-image>
+      <view class="book-text">
+        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <text class="book-outline">{{bookOutline[1]}}</text>
+      </view>   
+    </view> 
+  </view>
+
+  <view class="recommend-block">
+    <van-button type="warning" icon="flower-o" size="small" round>经典书籍</van-button>
+    <view class="book-img-warp">
+      <van-image
+        class="book-img"
+        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        width="4rem"
+        height="6rem"
+        fit="cover"
+        lazy-load
+        show-error
+        show-loading
+        show-menu-by-longpress
+        use-error-slot>
+        <text slot="error">加载失败</text>
+      </van-image>
+      <view class="book-text">
+        <rich-text nodes="{{bookNodes}}" bindtap="tap"></rich-text>
+        <text class="book-outline">{{bookOutline[1]}}</text>
+      </view>   
+    </view> 
+  </view>
+  <text class="not-more">已到底了哦</text>
 </view>
