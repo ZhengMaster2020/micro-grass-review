@@ -1,4 +1,24 @@
-<view>
-    this is search page
-    尚未开发
+<view class="search-book">
+  <van-search
+    value="{{ searchValue }}"
+    placeholder="请输入搜索关键词"
+    shape="round"
+    cancel-class="btn-cancel"
+    show-action
+    bind:search="searchBooks"
+    bind:cancel="returnToIndex"
+  />
+  <van-divider class="search-divider"/>
+  <view class="hot-search">
+    <van-button icon="fire">热搜榜</van-button>
+    <van-divider custom-style="margin:0"/>
+    <view class="search-book-rank">
+      <van-cell class="ranking" center wx:for="{{searchBookTopTen}}" wx:key="*this" bind:click="toBookDetail">
+        <view slot="title">
+          <van-tag type="{{ item.type }}">{{ item.rankNum }}</van-tag>
+          <van-tag plain custom-class="book-name">{{ item.searchBookName }}</van-tag>
+        </view>
+      </van-cell>
+    </view>
+  </view>
 </view>

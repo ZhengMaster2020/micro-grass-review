@@ -1,4 +1,90 @@
-<view>
-this is detail page
-尚未开发
+<view class="book-detail">
+  <van-card
+    tag="{{ bookDetail.tag }}"
+    thumb="{{ bookDetail.bookImgSrc }}">
+    <!-- 标题插槽 -->
+    <view slot="title" class="title-slot">
+      <text class="text"> {{ bookDetail.bookName }}</text>
+      <van-button wx:if="{{5>4}}" size="mini" plain icon="like" type="danger" class="add-collect" custom-style="border:none;background:none">添加收藏</van-button>
+      <van-button wx:else size="mini" plain icon="like" type="danger" class="add-collect" custom-style="border:none;background:none">已添加</van-button>
+    </view>
+    <!-- 书籍描述内容插槽 -->
+    <view slot="desc" class="desc-slot">
+      <view class="author">
+        <van-tag type="success">{{ bookDetail.author }}</van-tag> 
+      </view>
+      <view class="desc-warp">
+        <view class="desc"> {{ bookDetail.desc }} </view>
+        <view class="explane" bindtap="viewMore"> > </view>
+      </view>
+    </view>
+    <!-- 书籍评价等操作插槽 -->
+    <view slot="footer" class="footer-slot">
+      <view class="star">
+        <text class="point-num" wx:if="{{bookDetail.point}}">{{ bookDetail.point }}</text>
+        <text class="point-num" wx:else>暂无评分</text>
+        <van-rate value="{{ bookDetail.starCount }}" icon="like" void-icon="like-o" readonly size="24rpx"/> 
+      </view>
+      <view class="collect">
+        <text class="collect-count">{{ bookDetail.collection }}</text>
+        <text class="text">收藏数</text>
+      </view>
+      <view class="collect">
+        <text class="collect-count">{{ bookDetail.collection }}</text>
+        <text class="text">评论数</text>
+      </view>
+      <view class="collect">
+        <text class="collect-count">{{ bookDetail.collection }}</text>
+        <text class="text">读过数</text>
+      </view>
+      <view class="purchase-link">
+        <text class="text">纸质书籍</text>
+        <van-button plain type="warning" size="mini">购买渠道</van-button>
+      </view>
+    </view>
+  </van-card>
+  <van-tabs active="a" sticky animated swipeable>
+    <van-tab title="读后感" name="a">
+      <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot>
+        <view slot="label" class="cell-slot">
+          <text class="text"> 提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商</text>
+          <view class="coment-footer">
+            <text class="publish-text ">发表于：2020-03-08 12:45</text>
+            <view class="right">
+              <view class="icon" style="margin-right:20rpx"><van-icon color="#ff976a" style="margin-right:10rpx" name="thumb-circle" size="40rpx"/> 1212</view>
+              <view class="icon" style="margin-right:20rpx"><van-icon color="#07c160" style="margin-right:10rpx" name="comment-circle" size="40rpx" /> 4545</view>
+            </view>
+          </view>
+        </view>
+      </van-cell>
+    </van-tab>
+    <van-tab title="全部书评" name="b">
+       <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot>
+        <view slot="label" class="cell-slot">
+          <text class="text"> 提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商</text>
+          <view class="coment-footer">
+            <text class="publish-text ">发表于：2020-03-08 12：45</text>
+            <view class="right">
+              <view class="icon" style="margin-right:20rpx"><van-icon color="#ff976a" style="margin-right:10rpx" name="thumb-circle" size="40rpx"/> 1212</view>
+              <view class="icon" style="margin-right:20rpx"><van-icon color="#07c160" style="margin-right:10rpx" name="comment-circle" size="40rpx" /> 4545</view>
+            </view>
+          </view>
+        </view>
+      </van-cell>
+    </van-tab>
+    <van-tab title="火热书评" name="c">
+       <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot>
+        <view slot="label" class="cell-slot">
+          <text class="text"> 提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商</text>
+          <view class="coment-footer">
+            <text class="publish-text ">发表于：2020-03-08 12：45</text>
+            <view class="right">
+              <view class="icon" style="margin-right:20rpx"><van-icon color="#ff976a" style="margin-right:10rpx" name="thumb-circle" size="40rpx"/> 1212</view>
+              <view class="icon" style="margin-right:20rpx"><van-icon color="#07c160" style="margin-right:10rpx" name="comment-circle" size="40rpx" /> 4545</view>
+            </view>
+          </view>
+        </view>
+      </van-cell>
+    </van-tab>
+  </van-tabs>
 </view>

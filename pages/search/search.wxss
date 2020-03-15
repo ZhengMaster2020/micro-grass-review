@@ -1,0 +1,24 @@
+.search-book .btn-cancel {
+  color: #44BB5C
+}
+
+.search-book .search-divider .van-divider {
+  height: 20rpx;
+  margin: 0;
+  background: #ebedf0;
+}
+
+.search-book .hot-search .van-button--default {
+  border: none;
+}
+
+.hot-search .search-book-rank
+.ranking .book-name {
+  margin-left: 20rpx;
+  border: none;
+  font-size: 28rpx;
+  color: #969799;
+}
+.ranking .book-name::after {
+  border-color: transparent; 
+}

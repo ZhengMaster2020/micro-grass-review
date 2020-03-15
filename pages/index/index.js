@@ -6,7 +6,6 @@ var outline = '《人类群星闪耀时》内容介绍：拜占廷的沦陷、�
 var outline1 = '《追风筝的人》12岁的阿富汗富家少爷阿米尔与仆人哈桑情同手足。然而，在一场风筝比赛后，发生了一件悲惨不堪的事，阿米尔为自己的懦弱感到自责和痛苦，逼走了哈桑，不久，自己也跟随父亲逃往美国。'
 
 var appInstance = getApp()
-console.log(appInstance.globalData, 'appInstance')
 
 Page({
   data: {

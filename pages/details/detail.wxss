@@ -1,0 +1,138 @@
+.book-detail .desc-slot {
+  display: flex;
+  flex-direction: column;
+  height: 150rpx;
+  width: auto;
+  /* background: #f40; */
+}
+
+.book-detail .title-slot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.book-detail .title-slot .text {
+  display: inline-block;
+}
+
+.book-detail .title-slot .add-collect {
+  display: inline-block;
+}
+
+.book-detail .desc-slot .desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 40rpx;
+  color: #969799;
+}
+
+.book-detail .desc-slot .desc-warp {
+  display: flex;
+  font-size: 20rpx;
+  flex-direction: row;
+  align-items: center;
+}
+.desc-warp .explane {
+  font-weight: 650;
+  padding-left: 10rpx;
+  font-size: 22rpx;
+}
+
+.book-detail .footer-slot {
+  padding: 10rpx 0;
+  display: flex;
+  align-items: center;
+}
+.footer-slot .star {
+  display: flex;
+  justify-content: center;
+  padding: 20rpx;
+  margin-right: 10rpx;
+  flex-direction: column;
+}
+
+.footer-slot .collect {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10rpx;
+  margin-right: 20rpx;
+}
+.footer-slot .collect .collect-count {
+  font-size: 28rpx;
+}
+.footer-slot .collect .text {
+  margin-top: 20rpx;
+  font-size: 22rpx;
+  color: #969799;
+}
+
+.book-detail .footer-slot .point-num {
+  color: #969799;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.book-detail .desc-slot .author {
+  height: 28rpx;
+  line-height: 28rpx;
+  margin: 20rpx 0;
+  font-size: 24rpx;
+}
+
+.book-detail .footer-slot .purchase-link {
+  display: flex;
+  padding: 10rpx;
+  justify-content: right;
+  align-items: center;
+  flex-direction: column-reverse;
+  margin-left: 20rpx;
+}
+
+.footer-slot .purchase-link .text {
+  margin-top: 16rpx;
+  font-size: 22rpx;
+  color: #969799;
+}
+
+.book-detail .collapse-title {
+  display: flex;
+}
+.book-detail .publish-text {
+  font-size: 20rpx;
+  color: #969799;
+  text-align: left;
+}
+
+.book-detail .cell-slot {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.book-detail .cell-slot .text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 100rpx;
+  line-height: 50rpx;
+  padding-right: 20rpx;
+}
+.book-detail .cell-slot .coment-footer {
+  display: flex;
+  flex-direction: row;
+  margin: 10rpx 0;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.book-detail .coment-footer .right, .icon{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+}

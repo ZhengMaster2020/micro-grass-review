@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <view class="container">
-  <van-search
+  <!-- <van-search
     class="search-bar"
     placeholder="请输入的书名或作者名"
     placeholder-style="font-size:12px;"
@@ -10,10 +10,15 @@
     use-left-icon-slot
     use-action-slot
     bind:focus="toSearchPage"
-    bind:search="searchBook" >
-    <!-- <view slot="action" bind:tap="searchBook">搜索</view> -->
-    <van-icon class="search-icon" name="search" slot="left-icon" bind:click="searchBook"/>
-  </van-search>
+    bind:search="toSearchPage" >
+    <van-icon class="search-icon" name="search" slot="left-icon" bind:click="toSearchPage"/>
+  </van-search> -->
+  <van-button
+    class="search-bar"
+    icon="search"
+    round
+    block
+    bind:click="toSearchPage">请输入的书名或作者名</van-button>
   <!-- 轮播图模块 Start -->
   <view>
     <view class="page-section page-section-spacing swiper">
