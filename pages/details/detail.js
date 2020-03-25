@@ -9,18 +9,44 @@ Page({
     starCount: '4',
     collection: '200',
     point: '5.6',
+    likeNum: '520',
+    commentNum: '1314',
     tag: '人气榜',
+    publishTime: '',
+    readFeelingText: 'After reading feeling 通过disabled属性来禁用按钮，此时按钮不可点击',
+    giveLike: false,
     desc,
     bookName: '斗罗大陆',
     bookImgSrc: 'https://img.yzcdn.cn/vant/ipad.jpeg',
     bookShopLink: 'https://www.taobao.com'
+   },
+   userOperation: {
+    giveLike: false //读后感点赞
    } 
   },
+  // 查看书籍简介详细内容
   viewMore() {
     wx.showModal({
       title: '简介',
       content: this.data.bookDetail.desc,
       showCancel: false
+    })
+  },
+  // 跳转评论详细页面
+  toCommentDetail () {
+    console.log('toCommentDetail')
+    wx.navigateTo({
+      url: '../comment/comment',
+    })
+  },
+  // 点赞操作
+  addLikeNum () {
+    const that = this
+    const nonGiveLike = !that.data.bookDetail.giveLike
+    nonGiveLike ? that.data.bookDetail.likeNum++ : that.data.bookDetail.likeNum--
+    this.setData({
+      'bookDetail.giveLike': nonGiveLike,
+      'bookDetail.likeNum': that.data.bookDetail.likeNum
     })
   },
 })

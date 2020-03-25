@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "书友交流",
+  "navigationBarTitleText": "书评正文",
   "component": true,
   "usingComponents": {
     "van-button": "@vant/weapp/button",
@@ -16,6 +16,8 @@
     "van-tabs": "@vant/weapp/tabs",
     "van-collapse": "@vant/weapp/collapse",
     "van-cell": "@vant/weapp/cell",
-    "van-cell-group": "@vant/weapp/cell-group"
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-popup": "@vant/weapp/popup",
+    "van-sticky": "@vant/weapp/sticky"
   }
 }

@@ -40,6 +40,7 @@
   display: flex;
   justify-content: left;
   margin: 2rpx;
+  margin-top: 20rpx;
 }
 
 .book-img {

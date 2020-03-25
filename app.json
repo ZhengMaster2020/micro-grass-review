@@ -7,7 +7,8 @@
     "pages/search/search",
     "pages/search_result/result",
     "pages/topic/topic",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/comment/comment"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,8 +27,8 @@
       {
         "pagePath": "pages/list/list",
         "text": "排行榜",
-        "iconPath": "images/icon/list.png",
-        "selectedIconPath": "images/icon/list-actived.png"
+        "iconPath": "images/icon/ranking.png",
+        "selectedIconPath": "images/icon/ranking-active.png"
       },
       {
         "pagePath": "pages/about/about",

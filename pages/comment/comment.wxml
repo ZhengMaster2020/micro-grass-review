@@ -1,0 +1,79 @@
+<view class="comment">
+  <view class="user-info">
+    <van-image
+      bind:click="toUserCenter"
+      round
+      width="3rem"
+      height="3rem"
+      lazy-load
+      src="https://img.yzcdn.cn/vant/cat.jpeg"/>
+    <view class="text">
+      <text>相忘于惊呼</text>
+      <van-rate value="{{3}}" icon="like" void-icon="like-o" size="26rpx"/>
+    </view>
+  </view>
+  <van-card class="sale-link" bindtap="toBookMall">
+    <view slot="title" class="title">斗罗大陆</view>
+    <view slot="desc" class="desc"><van-tag>作者：2009年12月13日神</van-tag></view>
+    <view slot="thumb" class="thumb-link">
+     <van-image
+      class="book-img"
+      width="4rem"
+      height="5rem"
+      fit="cover"
+      src="https://img.yzcdn.cn/vant/cat.jpeg"/>
+    </view>
+  </van-card>
+  <view class="comment-text">{{ commentText }}</view>
+  <view class="comment-time">{{ commentTime }}</view>
+  <van-divider custom-style="margin:0;padding:0;background:#ebedf0;height:28rpx;"/>
+  <view class="comment-list">
+    <text class="total">全部回复（{{ allReplyText.length }}条）</text>
+    <van-divider custom-style="margin:0"/>
+    <van-cell
+      title-width="550rpx"
+      icon="friends"
+      size="large"
+      title="{{ username }}"
+      label="{{ replyText }}"
+      wx:for-index="num"
+      value="{{num+1}}楼"
+      bind:click="replyUserComment" wx:for="{{ allReplyText }}" wx:key="*this"/>
+  </view>
+
+  <!-- 回复用户 弹窗 -->
+  <van-popup
+    class="reply-popup"
+    show="{{ showReplyPopup }}"
+    position="center"
+    round
+    custom-style="height: 50%;width:90%;"
+    bind:close="closeReplyPopup">
+    <van-field
+      focus
+      clearable
+      autosize
+      show-confirm-bar
+      type="textarea"
+      border="{{true}}"
+      value="{{ commentValue }}"
+      class="reply-input"
+      placeholder="请输入回复的内容"
+      bind:change="setCommentVal"
+      bind:confirm="submitReplyText">
+    </van-field>
+    <van-button round type="primary" class="btn-reply" bind:click="submitReplyText">回复</van-button>
+  </van-popup>
+  <view class="sticky-btn">
+    <view class="btn">
+      <van-icon name="good-job" class="icon" /> 1314
+    </view>
+    <view class="btn">
+      <van-icon name="chat" class="icon"/> 520
+    </view>
+    <view class="btn">
+      <van-icon name="share" class="icon"/> 分享
+    </view>
+  </view>
+  <!-- 吸底按钮 -->
+</view>

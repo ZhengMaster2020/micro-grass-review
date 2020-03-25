@@ -1,8 +1,8 @@
 {
+  "navigationBarTitleText": "个人书评档案",
   "usingComponents": {},
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "个人书评档案",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": false
 }

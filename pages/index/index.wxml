@@ -43,7 +43,12 @@
   <!-- 每日推荐模块 Start -->
   <view class="recommend-block">
     <van-divider customStyle="margin:10rpx 0 10rpx 40rpx; width:100vw; color: #eee; border-color: #eee;"/>
-    <van-button type="info" icon="good-job-o" size="small" round bind:click="toTopicBlock">每日推荐</van-button>
+    <van-button type="info" icon="good-job-o" size="small" round bind:click="toTopicBlock">
+      <view style="display:flex;align-items:center">
+        每日推荐
+        <van-icon name="arrow" custom-style="margin-left:8rpx;"/>
+      </view>
+    </van-button>
     <view class="book-img-warp" wx:for="{{swiperImg}}" wx:key="*this">
       <van-image
         class="book-img"
@@ -51,6 +56,7 @@
         width="4rem"
         height="6rem"
         fit="cover"
+        bind:click="toDetial"
         lazy-load
         show-error
         show-loading
@@ -60,7 +66,7 @@
       </van-image>
       <view class="book-text">
         <rich-text nodes="{{bookNodes}}" bindtap="toDetial"></rich-text>
-        <text class="book-outline">{{bookOutline}}</text>
+        <text class="book-outline" bindtap="toDetial">{{bookOutline}}</text>
       </view>   
     </view> 
   </view>
@@ -68,9 +74,15 @@
 
   <!-- 热门书籍模块 Start -->
   <view class="recommend-block">
-    <van-button type="danger" icon="hot-o" size="small" round bind:click="toTopicBlock">热门书籍</van-button>
+    <van-button type="danger" icon="hot-o" size="small" round bind:click="toTopicBlock">
+      <view style="display:flex;align-items:center">
+        热门书籍
+        <van-icon name="arrow" custom-style="margin-left:8rpx;"/>
+      </view>
+    </van-button>
     <view class="book-img-warp">
       <van-image
+        bind:click="toDetial"
         class="book-img"
         src="https://img.yzcdn.cn/vant/cat.jpeg"
         width="4rem"
@@ -85,7 +97,7 @@
       </van-image>
       <view class="book-text">
         <rich-text nodes="{{bookNodes}}" bindtap="toDetial"></rich-text>
-        <text class="book-outline">{{bookOutline[1]}}</text>
+        <text class="book-outline"  bindtap="toDetial">{{bookOutline[1]}}</text>
       </view>   
     </view> 
     <view class="book-img-warp">
@@ -112,7 +124,12 @@
 
   <!-- 新书推荐模块 Start -->
   <view class="recommend-block">
-    <van-button type="primary" icon="new-o" size="small" round>新书推荐</van-button>
+    <van-button type="primary" icon="new-o" size="small" round>
+       <view style="display:flex;align-items:center">
+        新书推荐
+        <van-icon name="arrow" custom-style="margin-left:8rpx;"/>
+      </view>
+    </van-button>
     <view class="book-img-warp">
       <van-image
         class="book-img"
@@ -137,7 +154,12 @@
 
   <!-- 经典书籍模块 Start -->
   <view class="recommend-block">
-    <van-button type="warning" icon="flower-o" size="small" round>经典书籍</van-button>
+    <van-button type="warning" icon="flower-o" size="small" round>
+      <view style="display:flex;align-items:center">
+        经典书籍
+      <van-icon name="arrow" custom-style="margin-left:8rpx;"/>
+      </view>
+    </van-button>
     <view class="book-img-warp">
       <van-image
         class="book-img"

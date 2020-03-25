@@ -45,21 +45,41 @@
   </van-card>
   <van-tabs active="a" sticky animated swipeable>
     <van-tab title="读后感" name="a">
-      <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot>
+      <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot wx:key="*this">
         <view slot="label" class="cell-slot">
-          <text class="text"> 提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商</text>
+          <text class="text" bindtap="toCommentDetail"> {{ bookDetail.readFeelingText }}</text>
           <view class="coment-footer">
-            <text class="publish-text ">发表于：2020-03-08 12:45</text>
+            <text class="publish-text ">发表于：2020-03-08 12:45 {{ bookDetail.publishTime }}</text>
             <view class="right">
-              <view class="icon" style="margin-right:20rpx"><van-icon color="#ff976a" style="margin-right:10rpx" name="thumb-circle" size="40rpx"/> 1212</view>
-              <view class="icon" style="margin-right:20rpx"><van-icon color="#07c160" style="margin-right:10rpx" name="comment-circle" size="40rpx" /> 4545</view>
+            <!-- 点赞部分 -->
+              <view
+                class="icon"
+                style="margin-right:20rpx">
+                <van-icon
+                  bind:click="addLikeNum"
+                  color="{{ bookDetail.giveLike ? '#ee0a24': '' }}"
+                  style="margin-right:10rpx"
+                  name="thumb-circle"
+                  size="40rpx"/> {{ bookDetail.likeNum }}
+              </view>
+              <!-- 评论部分 -->
+              <view
+                bindtap="toCommentDetail"
+                class="icon"
+                style="margin-right:20rpx">
+                <van-icon
+                  color="#07c160"
+                  style="margin-right:10rpx"
+                  name="comment-circle"
+                  size="40rpx" /> {{ bookDetail.commentNum }}
+              </view>
             </view>
           </view>
         </view>
       </van-cell>
     </van-tab>
     <van-tab title="全部书评" name="b">
-       <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot>
+       <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot wx:key="*this">
         <view slot="label" class="cell-slot">
           <text class="text"> 提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商</text>
           <view class="coment-footer">
@@ -73,7 +93,7 @@
       </van-cell>
     </van-tab>
     <van-tab title="火热书评" name="c">
-       <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot>
+       <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot wx:key="*this">
         <view slot="label" class="cell-slot">
           <text class="text"> 提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商</text>
           <view class="coment-footer">

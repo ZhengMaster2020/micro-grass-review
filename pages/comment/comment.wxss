@@ -1,0 +1,102 @@
+
+.comment .user-info {
+  display: flex;
+  padding-top: 20rpx;
+  margin-bottom: 40rpx;
+  margin: 0 20rpx;
+}
+.comment .user-info .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10rpx;
+}
+.comment .user-info .text > text {
+  margin-bottom: 10rpx;
+  font-size: 28rpx;
+  font-weight: 550;
+}
+
+.comment .sale-link {
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+}
+.comment .sale-link .book-img {
+  width: 5rem;
+  height: 6rem;
+}
+.comment .sale-link .title {
+  font-weight: bold;
+  position: absolute;
+  top: 20%;
+}
+.comment .sale-link .desc {
+  position: absolute;
+  top: 45%;
+}
+
+.comment .comment-text {
+  font-size: 32rpx;
+  margin-top: 40rpx;
+  line-height: 1.5;
+  margin: 0 20rpx;
+}
+.comment .comment-time {
+  margin: 30rpx;
+  font-size: 24rpx;
+  color: #969799;
+}
+
+.comment .comment-list {
+  /* background: #ee0a85; */
+  margin-bottom: 20rpx;
+}
+.comment .comment-list .total {
+  height: 80rpx;
+  margin: 10rpx 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.comment .reply-popup {
+  position: relative;
+}
+.comment .reply-popup .btn-reply {
+  position: absolute;
+  margin-top: 40rpx;
+  bottom: 20rpx;
+  left: 50%;
+  transform: translate(-50%, 0)
+}
+.comment .reply-popup .reply-input .van-cell {
+  margin-top: 10rpx;
+}
+
+.comment .sticky-btn {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+}
+.comment .sticky-btn .btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #07c160;
+  flex: 1;
+  font-size: 32rpx;
+  border-top: 1px solid #c9f8e0;
+  border-right: 1px solid #c9f8e0;
+  padding: 40rpx;
+  background-color: #fff;
+}
+.comment .sticky-btn .btn:last-child {
+  border-right: none;
+}
+.comment .sticky-btn .icon {
+  margin-right: 20rpx;
+}

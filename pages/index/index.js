@@ -49,7 +49,8 @@ Page({
     wx.navigateTo({ url: '../search/search' })
   },
   // 查看书籍详情内容
-  toDetial(e) {
+  toDetial() {
+    console.log('dd')
     wx.navigateTo({
       url: '../details/detail',
     })
