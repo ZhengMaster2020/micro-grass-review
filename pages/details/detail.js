@@ -14,15 +14,32 @@ Page({
     tag: '人气榜',
     publishTime: '',
     readFeelingText: 'After reading feeling 通过disabled属性来禁用按钮，此时按钮不可点击',
-    giveLike: false,
+    giveLike: false, // 点赞
     desc,
     bookName: '斗罗大陆',
     bookImgSrc: 'https://img.yzcdn.cn/vant/ipad.jpeg',
+    bookSaleLink: 'https://detail.tmall.com/item.htm?spm=a230r.1.14.1.31a729e1rsOf4v&id=611212882092&ns=1&abbucket=5',
     bookShopLink: 'https://www.taobao.com'
    },
    userOperation: {
+    collectBookFlag: false, // 添加收藏
     giveLike: false //读后感点赞
    } 
+  },
+  // 添加收藏
+  collectBook () {
+    const that = this
+    const { collectBookFlag } = that.data.userOperation
+    this.setData({ 'userOperation.collectBookFlag': !collectBookFlag })
+    !collectBookFlag && wx.showToast({
+      title: '收藏成功',
+      image: '../../images/icon/success.png',
+    })
+    collectBookFlag && wx.showToast({
+      title: '已取消收藏',
+      image: '../../images/icon/warning.png',
+      complete: function(res) {},
+    })
   },
   // 查看书籍简介详细内容
   viewMore() {
@@ -30,6 +47,29 @@ Page({
       title: '简介',
       content: this.data.bookDetail.desc,
       showCancel: false
+    })
+  },
+  // 复制书籍链接
+  toBookMall() {
+    const that = this
+    console.log('toBookMall')
+    wx.showModal({
+      title: '纸质书籍购买链接',
+      content: that.data.bookDetail.bookSaleLink,
+      confirmText: '复制链接',
+      success(res) {
+        if (res.confirm) {
+          wx.setClipboardData({
+            data: that.data.bookDetail.bookSaleLink,
+            success(res) {
+              wx.showToast({
+                title: '复制成功',
+                image: '../../images/icon/success.png',
+              })
+            }
+          })
+        }
+      }
     })
   },
   // 跳转评论详细页面

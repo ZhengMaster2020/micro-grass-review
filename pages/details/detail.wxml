@@ -5,8 +5,8 @@
     <!-- 标题插槽 -->
     <view slot="title" class="title-slot">
       <text class="text"> {{ bookDetail.bookName }}</text>
-      <van-button wx:if="{{5>4}}" size="mini" plain icon="like" type="danger" class="add-collect" custom-style="border:none;background:none">添加收藏</van-button>
-      <van-button wx:else size="mini" plain icon="like" type="danger" class="add-collect" custom-style="border:none;background:none">已添加</van-button>
+      <van-button wx:if="{{ !userOperation.collectBookFlag }}" size="mini" plain icon="like" type="danger" class="add-collect" custom-style="border:none;background:none"  bindtap="collectBook">添加收藏</van-button>
+      <van-button wx:else size="mini" plain icon="like" type="danger" class="add-collect" custom-style="border:none;background:none" bindtap="collectBook">已添加</van-button>
     </view>
     <!-- 书籍描述内容插槽 -->
     <view slot="desc" class="desc-slot">
@@ -37,7 +37,7 @@
         <text class="collect-count">{{ bookDetail.collection }}</text>
         <text class="text">读过数</text>
       </view>
-      <view class="purchase-link">
+      <view class="purchase-link" bindtap="toBookMall">
         <text class="text">纸质书籍</text>
         <van-button plain type="warning" size="mini">购买渠道</van-button>
       </view>

@@ -1,0 +1,43 @@
+<view class="list-detail">
+  <view class="title-wrap">
+    <text class="title-text">{{title}}</text>
+  </view>
+  <!-- 书籍排行榜详情 -->
+  <view class="list-book-wrap" wx:for="121" wx:key="*this" wx:for-index="num">
+    <view class="tag" >
+      <van-tag color="#ffd21e" custom-class="num">No.{{num+1}}</van-tag>
+    </view>
+    <view class="detail">
+      <view class="left">
+        <van-image
+        width="80"
+        height="100"
+        src="https://img.yzcdn.cn/vant/cat.jpeg"
+        custom-class="img"/>
+        <view class="des-wrap">
+          <text class="title">《悲惨世界》</text>
+          <van-rate
+            size="10px"
+            allow-half
+            value="{{ 4.5 }}"
+            count="{{ 5 }}"
+            bind:change="onChange"
+          />
+          <text class="author">戈尔巴乔夫</text>
+        </view>
+      </view>
+      <view class="look">
+        <van-rate
+          value="{{ 0 }}"
+          count="{{ 1 }}"
+          void-color="#ffd21e"
+          bind:change="onChange"
+        />
+        <text class="text">看过</text>
+      </view>
+    </view>
+    <view class="des">
+      《你想活出怎样的人生》是一本宫崎骏从10岁读到70岁的小说，与宫崎骏结下了奇妙的缘分：小学时宫崎骏就在教科书上读到书中节选，不久后偶然在家附 近的旧书店再次看到并买下
+    </view>
+  </view>
+</view>

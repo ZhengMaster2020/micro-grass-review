@@ -1,24 +1,19 @@
 // pages/about/about.js
 Page({
   data: {
-    userInfo: {}
+    userInfo: {},
+    isLogin: false
   },
   // 用户登录
-  login () {
-    console.log('ppp')
+  login() {
+    const that = this
+    wx.showToast({ title: '成功授权登录'})
+    this.setData({ "isLogin": true })
   },
-
-
-
-
-
-
-
-
-
-
-
-
+  logout() {
+    const that = this
+    this.setData({ "isLogin": false })
+  },
 
 
 

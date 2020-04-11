@@ -1,0 +1,131 @@
+.book-ranking {
+  margin: 0 20rpx;
+  margin-top: 20rpx;
+  /* background: #eaf048; */
+}
+.annual-ranking {
+  width: 100%;
+  height: 25vh;
+  background: #f1f5f7;
+  background-image: url(https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3808452032,3233635323&fm=26&gp=0.jpg);
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+  padding-top: 20rpx;
+  overflow: hidden;
+}
+.annual-ranking .img-wrap {
+  display: flex;
+  align-items: center;
+  margin-left: 40rpx;
+}
+.annual-ranking .img-wrap .text-num {
+  margin-left: 20rpx;
+  color: rgb(161, 161, 109);
+}
+.annual-ranking .title {
+  margin-bottom: 20rpx;
+  margin-left: 40rpx;
+  display: block;
+  color: rgb(204, 175, 121);
+  font-weight: bold;
+}
+.weekly-ranking {
+  background: #b8ffb8;
+  background-image: url(https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3646927321,1165780335&fm=26&gp=0.jpg);
+  width: 100%;
+  height: 25vh;
+  padding-top: 20rpx;
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+}
+.weekly-ranking .title {
+  margin-bottom: 20rpx;
+  margin-left: 40rpx;
+  display: block;
+  color: rgb(11, 122, 150);
+  font-weight: bold;
+}
+.weekly-ranking .img-wrap {
+  display: flex;
+  align-items: center;
+  margin-left: 40rpx;
+}
+.weekly-ranking .img-wrap .text-num {
+  margin-left: 20rpx;
+  color: rgb(60, 152, 175);
+}
+.ranking-wrap {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  /* background: #5fd9cd; */
+}
+.ranking-wrap .book-type {
+  width:300rpx;
+  height: 200rpx;
+  background: linear-gradient(to right bottom, #f1f5f7,#07c160,rgb(21, 131, 21),#b8ffb8,#ccc);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10rpx;
+  color: #fff; 
+}
+.ranking-wrap .book-type  .num {
+  margin-top: 10rpx;
+  font-weight: bold;
+  font-size: 24rpx;
+  font-style: italic;
+}
+.ranking-wrap .book-top {
+  padding-top: 20rpx;
+  padding-left: 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 160rpx;
+  border: 2rpx solid #ccc;
+  border-left: none;
+  /* background: #d0e9ff; */
+  background: #fff;
+}
+
+.ranking-wrap .book-top .book-list {
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+}
+
+.book-ranking .suggest {
+  margin-bottom: 40rpx;
+}
+.book-ranking .suggest .title {
+  margin: 20rpx 0;
+  display: block;
+}
+.book-ranking .suggest .suggest-book-list {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+ .suggest-book-list .des {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   margin-left: 40rpx;
+   overflow: hidden;
+ }
+ .suggest-book-list .des .text {
+   font-size: 24rpx;
+   color: #555;
+   margin-top: 20rpx;
+ }
+
+.book-ranking .suggest .chang-btn {
+  margin-top: 20rpx;
+  display: block;
+  color: #07c160;
+  text-align: center;
+  padding: 28rpx;
+  border-radius: 16rpx;
+  border: 2rpx solid #ccc;
+}

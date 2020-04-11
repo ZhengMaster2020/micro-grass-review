@@ -1,16 +1,34 @@
 /* pages/about/about.wxss */
 .header-about{
-  height: 25vh;
+  position: relative;
+  height: 30vh;
   background-color: #44BB5C;
+  background: url(http://img2.imgtn.bdimg.com/it/u=3792076576,2663602442&fm=26&gp=0.jpg) no-repeat center;
+  background-size: 100% auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .btn-login{
   width: 50vw;
-  color: #121212;
+  color: #44BB5C;
   background: #fff;
   border-radius: 25px;
+}
+.header-about .login {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-size: 22rpx;
+  justify-content: center;
+  align-items: center;
+}
+.header-about .exit-btn {
+  position: absolute;
+  right: 40rpx;
+  bottom: 40rpx;
 }
 .main-about-title{
   display: block;

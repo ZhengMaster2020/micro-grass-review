@@ -1,11 +1,21 @@
 <!--pages/about/about.wxml-->
 <view class="header-about">
-  <button class="btn-login" bindtap="login">登  录</button>
+  <button wx:if="{{!isLogin}}" class="btn-login" bindtap="login">登  录</button>
+  <view class="login" wx:else>
+    <van-image
+      round
+      width="5rem"
+      height="5rem"
+      src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586544079829&di=cdce3d75a27527d8a9eff06334a7b43f&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F19%2F20180819213054_4Pt8G.jpeg"
+    />
+    <text>中国移不动</text>
+  </view>
+  <van-button bindtap="logout" wx:if="{{isLogin}}" class="exit-btn" size="mini" icon="peer-pay" plain type="primary">退出</van-button>
 </view>
 <view class="main-about">
   <text class="main-about-title">
   <text>我的书评库</text>
-  <text class="login-to">登录查看</text>
+  <text class="login-to" wx:if="{{!isLogin}}">登录查看</text>
   </text>
   <view>
 

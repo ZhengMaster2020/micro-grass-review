@@ -1,13 +1,77 @@
-<view>
-  <view>年度书籍排行榜</view>
+<view class="book-ranking">
+  <view class="annual-ranking" bindtap="toRankingDetail" data-title="{{annual}}">
+    <text class="title">年度书籍排行榜</text>
+    <view class="img-wrap">
+      <van-image
+        class="img"
+        width="80"
+        height="100"
+        src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=215458172,2999821454&fm=26&gp=0.jpg"/>
+      <van-image
+        class="img"
+        width="50"
+        height="100"
+        src="https://dss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2066089043,3551751957&fm=26&gp=0.jpg"/>
+      <van-image
+        class="img"
+        width="50"
+        height="100"
+        src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3984611386,1000087904&fm=11&gp=0.jpg"/>
+      <text class="text-num">+210</text>
+    </view>
+  </view>
+  <view class="weekly-ranking" bindtap="toRankingDetail" data-title="{{weekly}}">
+    <text class="title">一周书籍排行榜</text>
+    <view class="img-wrap">
+      <van-image
+        width="80"
+        height="100"
+        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=225707388,3102717595&fm=26&gp=0.jpg" />
+        <van-image
+        width="50"
+        height="100"
+        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3139684497,1372276514&fm=26&gp=0.jpg" />
+        <van-image
+        width="50"
+        height="100"
+        src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=155093939,785266354&fm=26&gp=0.jpg" />
+        <text class="text-num">+20</text>
+    </view>
+  </view>
+  <view class="ranking-wrap" wx:for="{{bookRankingList}}" wx:key="*this" bindtap="toRankingDetail" data-title="{{item.rankingType}}">
+    <view class="book-type">
+      <text class="text">{{ item.rankingType }}</text>
+      <text class="text num">Top {{ item.typeNum }}</text>
+    </view>
+    <view class="book-top">
+      <view class="book-list"
+        wx:for="{{item.bookList}}"
+        wx:key="*this"
+        wx:for-item="list"
+        wx:for-index="idx"
+        bindtap="toBookDetail">
+        {{idx+1}}.{{ list.bookName }} <van-tag type="warning">{{ list.score }}分</van-tag>
+      </view>
+    </view>
+  </view>
 
-  <view>一月好评书籍榜</view>
-
-  <view>一周书籍排行榜</view>
-
-  <view>年度书籍排行榜</view>
-  
-  <view>好书推荐榜</view>
-
-  <view>电子书排行榜</view>
+  <view class="suggest">
+    <text class="title">猜你喜欢</text>
+    <view class="suggest-book-list" wx:for="{{ suggestBookList }}" wx:key="*this">
+      <van-image
+        width="100"
+        height="100"
+        src="{{item.picUrl}}"
+      />
+      <view class="des">
+        <text>{{item.name}}</text>
+        <text class="text"> {{item.author}}</text>
+        <text class="text"> {{item.desc}}</text>
+      </view>
+    </view>
+    <view class="chang-btn" wx:if="{{loading}}" bindtap="changBatch">
+      <van-loading type="spinner" size="16px" color="#07c160"></van-loading>
+    </view>
+    <view class="chang-btn" wx:else  bindtap="changBatch">换一批</view>
+  </view>
 </view>
