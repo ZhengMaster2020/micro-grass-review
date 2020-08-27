@@ -1,4 +1,5 @@
 <view class="search-book">
+  <!-- 搜索框部分内容 -->
   <van-search
     value="{{ searchValue }}"
     placeholder="请输入搜索关键词"
@@ -7,18 +8,65 @@
     show-action
     bind:search="searchBooks"
     bind:cancel="returnToIndex"
+    bind:clear="initSearchPage"
   />
   <van-divider class="search-divider"/>
-  <view class="hot-search">
+  <!-- 搜索书籍初始化页面 -->
+  <view wx:if="{{!searchResult}}" class="hot-search">
     <van-button icon="fire">热搜榜</van-button>
     <van-divider custom-style="margin:0"/>
     <view class="search-book-rank">
-      <van-cell class="ranking" center wx:for="{{searchBookTopTen}}" wx:key="*this" bind:click="toBookDetail">
+      <van-cell
+        class="ranking"
+        center 
+        wx:for="{{searchBookTopTen}}"
+        wx:key="index" 
+        data-bookid="{{item.bookId}}"
+        bind:click="toBookDetail">
         <view slot="title">
-          <van-tag type="{{ item.type }}">{{ item.rankNum }}</van-tag>
+          <van-tag type="{{ item.type }}">{{ index+1 }}</van-tag>
           <van-tag plain custom-class="book-name">{{ item.searchBookName }}</van-tag>
         </view>
       </van-cell>
+    </view>
+  </view>
+  <!-- 查询结果反馈页面 -->
+  <view wx:else class="result">
+    <view class="tips" wx:if="{{searchResult.length > 0}}">为您搜寻到 <text class="num">{{ searchResult.length }} </text>条结果，详情如下：</view>
+    <block wx:if="{{searchResult.length > 0}}">
+      <view 
+        wx:for="{{ searchResult }}"
+        wx:key="*this" 
+        data-bookid="{{item._id}}" 
+        bindtap="toBookDetail" 
+        class="search-result">
+        <van-image
+          width="80"
+          height="100"
+          lazy-load
+          src="{{ item.avatarUrl }}"
+          class="img"
+        />
+        <view class="wrap">
+          <view class="title">
+            <text class="text">{{ item.bookName }}</text>
+            <view class="type" wx:if="{{ item.type }}">
+              <van-tag type="success" size="medium">{{ item.type[0] }}</van-tag>
+            </view>
+          </view>
+          <view class="author">作者：{{ item.author }}</view>
+          <view class="time">出版时间：{{ item.publishTime }}</view>
+        </view>
+      </view>
+    </block>
+    <view wx:else class="no-data">
+      <van-image
+        round
+        width="100"
+        height="100"
+        lazy-load
+        src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1587505196510&di=46827ae82aa76488ebe85479f0e4c136&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Felement_pic%2F19%2F03%2F12%2Fe24240866df0a4be7ca577be81c94dd3.jpg"/>
+      <view class="text">很遗憾未能找您想要的书籍</view>
     </view>
   </view>
 </view>

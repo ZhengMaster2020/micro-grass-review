@@ -5,11 +5,15 @@
     "pages/about/about",
     "pages/details/detail",
     "pages/search/search",
-    "pages/search-result/result",
+    "pages/result/result",
     "pages/topic/topic",
     "pages/personal/personal",
     "pages/comment/comment",
-    "pages/ranking/ranking"
+    "pages/ranking/ranking",
+    "pages/collect/collect",
+    "pages/history/history",
+    "pages/review/review",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

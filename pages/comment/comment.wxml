@@ -8,20 +8,20 @@
       lazy-load
       src="https://img.yzcdn.cn/vant/cat.jpeg"/>
     <view class="text">
-      <text>相忘于惊呼</text>
+      <text>相忘于江湖</text>
       <van-rate value="{{3}}" icon="like" void-icon="like-o" size="26rpx"/>
     </view>
   </view>
   <van-card class="sale-link" bindtap="toBookMall">
     <view slot="title" class="title">斗罗大陆</view>
-    <view slot="desc" class="desc"><van-tag>作者：2009年12月13日神</van-tag></view>
+    <view slot="desc" class="desc"><van-tag>作者：唐家三少</van-tag></view>
     <view slot="thumb" class="thumb-link">
      <van-image
       class="book-img"
       width="4rem"
       height="5rem"
       fit="cover"
-      src="https://img.yzcdn.cn/vant/cat.jpeg"/>
+      src="https://img3.doubanio.com/view/subject/l/public/s6847563.jpg"/>
     </view>
   </van-card>
   <view class="comment-text">{{ commentText }}</view>
@@ -71,7 +71,7 @@
     <view class="btn">
       <van-icon name="chat" class="icon"/> 520
     </view>
-    <view class="btn">
+    <view class="btn" bindtap="shareBook">
       <van-icon name="share" class="icon"/> 分享
     </view>
   </view>

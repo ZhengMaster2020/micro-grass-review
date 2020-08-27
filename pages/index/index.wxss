@@ -126,11 +126,14 @@
   align-items: center;
   justify-content: center;
   background-color: #1AAD19;
+  background: url('http://img4.imgtn.bdimg.com/it/u=1004896150,691470282&fm=26&gp=0.jpg') no-repeat center;
+  background-size: 100% auto;
   color: #FFFFFF;
   font-size: 36rpx;
 }
 .demo-text-1:before{
-  content: '好书';
+  content: '细品好书';
+  color: rgb(236, 201, 134, 0.7);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -141,6 +144,8 @@
   align-items: center;
   justify-content: center;
   background-color: #2782D7;
+  background: url(http://img0.imgtn.bdimg.com/it/u=3036137073,3159828703&fm=26&gp=0.jpg) no-repeat center;
+  background-size: 100% auto;
   color: #FFFFFF;
   font-size: 36rpx;
 }
@@ -156,6 +161,8 @@
   align-items: center;
   justify-content: center;
   background-color: #F1F1F1;
+  background: url(http://img1.imgtn.bdimg.com/it/u=2657979837,646570078&fm=26&gp=0.jpg) no-repeat center;
+  background-size: 100% auto;
   color: #353535;
   font-size: 36rpx;
 }

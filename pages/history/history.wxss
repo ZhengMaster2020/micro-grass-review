@@ -1,0 +1,47 @@
+.history .slot-title {
+  display: flex;
+}
+.slot-title .content-wrap {
+  margin: 0 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.slot-title .content-wrap .name {
+  display: block;
+  color: #666;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+.slot-title .content-wrap .author {
+  font-size: 24rpx;
+  color: #ccc;
+  padding-right: 20rpx;
+  display: block;
+  /* background: #ffd21e; */
+  width: 100%;
+  white-space: normal;
+}
+
+.content-wrap .rate {
+  display: flex;
+  align-items: center;
+}
+.content-wrap .rate .num {
+  font-size: 24rpx;
+  color: #ccc;
+  margin: 0 10rpx;
+}
+.content-wrap .remark {
+  display: block;
+  color: #ccc;
+  font-size: 24rpx;
+  padding: 6rpx;
+  padding-left: 10rpx;
+  line-height: 30rpx;
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-left: 4rpx solid #ffd21e;
+}

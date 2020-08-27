@@ -81,6 +81,10 @@ Page({
       }
     ]
   },
+  // 书籍排行榜
+  bookRanking() {
+    console.log('opop')
+  },
   // 跳往特定类型排行榜详情页面
   toRankingDetail(e) {
     console.log('toBookDetail', e)

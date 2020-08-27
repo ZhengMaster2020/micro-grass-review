@@ -16,6 +16,8 @@
     "van-tabs": "@vant/weapp/tabs",
     "van-collapse": "@vant/weapp/collapse",
     "van-cell": "@vant/weapp/cell",
-    "van-cell-group": "@vant/weapp/cell-group"
+    "van-cell-group": "@vant/weapp/cell-group",
+    "van-overlay": "@vant/weapp/overlay",
+    "van-panel": "@vant/weapp/panel"
   }
 }

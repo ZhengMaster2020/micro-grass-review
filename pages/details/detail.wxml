@@ -1,43 +1,60 @@
 <view class="book-detail">
   <van-card
-    tag="{{ bookDetail.tag }}"
-    thumb="{{ bookDetail.bookImgSrc }}">
+    tag="{{ bookDetailMsg.type[0] }}"
+    thumb="{{ bookDetailMsg.avatarUrl }}">
     <!-- 标题插槽 -->
     <view slot="title" class="title-slot">
-      <text class="text"> {{ bookDetail.bookName }}</text>
-      <van-button wx:if="{{ !userOperation.collectBookFlag }}" size="mini" plain icon="like" type="danger" class="add-collect" custom-style="border:none;background:none"  bindtap="collectBook">添加收藏</van-button>
-      <van-button wx:else size="mini" plain icon="like" type="danger" class="add-collect" custom-style="border:none;background:none" bindtap="collectBook">已添加</van-button>
+      <text class="text"> {{ bookDetailMsg.bookName }}</text>
+      <van-button
+        wx:if="{{ !bookDetailMsg.collectBookFlag }}" 
+        size="mini" plain icon="like" 
+        type="danger" 
+        class="add-collect" 
+        custom-style="border:none;background:none"
+        data-flag="{{bookDetailMsg.collectBookFlag}}"
+        data-bookid="{{ bookDetailMsg._id }}"  
+        bindtap="collectBook">添加收藏</van-button>
+      <van-button 
+        wx:else size="mini" 
+        plain icon="like" 
+        type="danger" 
+        class="add-collect" 
+        custom-style="border:none;background:none" 
+        data-flag="{{bookDetailMsg.collectBookFlag}}"
+        data-bookid="{{ bookDetailMsg._id }}" 
+        bindtap="collectBook">已添加</van-button>
     </view>
     <!-- 书籍描述内容插槽 -->
     <view slot="desc" class="desc-slot">
       <view class="author">
-        <van-tag type="success">{{ bookDetail.author }}</van-tag> 
+        <van-tag type="success">{{ bookDetailMsg.author }}</van-tag> 
       </view>
       <view class="desc-warp">
-        <view class="desc"> {{ bookDetail.desc }} </view>
-        <view class="explane" bindtap="viewMore"> > </view>
+        <view class="desc"> {{ bookDetailMsg.introduction }} </view>
+        <view class="explane" data-intro="{{ bookDetailMsg.introduction }}" bindtap="viewMore"> > </view>
       </view>
     </view>
     <!-- 书籍评价等操作插槽 -->
     <view slot="footer" class="footer-slot">
-      <view class="star">
-        <text class="point-num" wx:if="{{bookDetail.point}}">{{ bookDetail.point }}</text>
+      <view class="star"data-bookid="{{ bookDetailMsg._id }}"  bindtap="toGrade">
+        <text class="point-num" wx:if="{{bookDetail.point}}">
+        {{ averageScore }} 分</text>
         <text class="point-num" wx:else>暂无评分</text>
-        <van-rate value="{{ bookDetail.starCount }}" icon="like" void-icon="like-o" readonly size="24rpx"/> 
+        <van-rate value="{{ starCount }}" icon="like" void-icon="like-o" readonly size="24rpx"/> 
       </view>
       <view class="collect">
-        <text class="collect-count">{{ bookDetail.collection }}</text>
+        <text class="collect-count">{{ bookDetailMsg.collectionCount }}</text>
         <text class="text">收藏数</text>
       </view>
-      <view class="collect">
-        <text class="collect-count">{{ bookDetail.collection }}</text>
+      <view class="collect" data-bookid="{{ bookDetailMsg._id }}"  bindtap="showCommentModel">
+        <text class="collect-count">{{ bookDetailMsg.commentCount }}</text>
         <text class="text">评论数</text>
       </view>
-      <view class="collect">
-        <text class="collect-count">{{ bookDetail.collection }}</text>
+      <view class="collect"  data-bookid="{{ bookDetailMsg._id }}"  bindtap="updateBookMsg">
+        <text class="collect-count">{{ bookDetailMsg.readers }}</text>
         <text class="text">读过数</text>
       </view>
-      <view class="purchase-link" bindtap="toBookMall">
+      <view class="purchase-link" data-link="{{ bookDetailMsg.purchaseLink }}" bindtap="toBookMall">
         <text class="text">纸质书籍</text>
         <van-button plain type="warning" size="mini">购买渠道</van-button>
       </view>
@@ -45,22 +62,31 @@
   </van-card>
   <van-tabs active="a" sticky animated swipeable>
     <van-tab title="读后感" name="a">
-      <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot wx:key="*this">
+      <view wx-if="{{  !bookDetail.thoughts.length }}" class="none">尚无用户发表书籍读后感</view>
+      <van-cell
+        wx-else
+        wx:for="{{ bookDetail.thoughts }}"
+        title="{{ item.username }}"
+        icon="user-circle-o"
+        use-label-slot wx:key="*this">
         <view slot="label" class="cell-slot">
-          <text class="text" bindtap="toCommentDetail"> {{ bookDetail.readFeelingText }}</text>
+          <text class="text" bindtap="toCommentDetail"> {{ item.readFeelingText }}</text>
           <view class="coment-footer">
-            <text class="publish-text ">发表于：2020-03-08 12:45 {{ bookDetail.publishTime }}</text>
+            <text class="publish-text ">发表于：{{ item.publishTime }}</text>
             <view class="right">
             <!-- 点赞部分 -->
               <view
                 class="icon"
                 style="margin-right:20rpx">
                 <van-icon
+                  data-thoughtid="{{ item._id }}"
+                  data-like="{{item.giveLike}}"
+                  data-bookid="{{item.bookID}}"
                   bind:click="addLikeNum"
-                  color="{{ bookDetail.giveLike ? '#ee0a24': '' }}"
+                  color="#07c160"
                   style="margin-right:10rpx"
                   name="thumb-circle"
-                  size="40rpx"/> {{ bookDetail.likeNum }}
+                  size="40rpx"/> {{ item.likeNum }}
               </view>
               <!-- 评论部分 -->
               <view
@@ -71,7 +97,7 @@
                   color="#07c160"
                   style="margin-right:10rpx"
                   name="comment-circle"
-                  size="40rpx" /> {{ bookDetail.commentNum }}
+                  size="40rpx" /> {{ item.commentNum }}
               </view>
             </view>
           </view>
@@ -79,7 +105,56 @@
       </van-cell>
     </van-tab>
     <van-tab title="全部书评" name="b">
-       <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot wx:key="*this">
+      <view wx-if="{{  !commentLists.length }}" class="none">尚无用户发表书籍读后感</view>
+       <van-cell 
+        wx-else 
+        wx:for="{{ commentLists}}"
+        title="{{item.nickName}}" 
+        icon="user-circle-o" 
+        use-label-slot 
+        wx:key="*this">
+        <view slot="label" class="cell-slot">
+          <text
+            class="text" 
+            data-commentid="{{ item._id }}"
+            data-bookid="{{item.bookID}}"
+            data-like="{{item.giveLike}}"
+            bindtap="toCommentDetail">{{item.content}}</text>
+          <view class="coment-footer">
+            <text class="publish-text ">发表于：{{ item.publishTime }}</text>
+            <view class="right">
+              <view class="icon" style="margin-right:20rpx">
+                <!-- color="#ff976a"  -->
+              <van-icon 
+                color="#07c160" 
+                style="margin-right:10rpx"
+                name="thumb-circle" 
+                data-commentid="{{ item._id }}"
+                data-bookid="{{item.bookID}}"
+                data-like="{{item.giveLike}}"
+                bind:click="addLikeNum"
+                size="40rpx"/>
+               {{ item.likeNum }}
+              </view>
+              <view 
+                class="icon" 
+                style="margin-right:20rpx">
+                <van-icon 
+                  color="#07c160" 
+                  style="margin-right:10rpx" 
+                  name="comment-circle" 
+                  size="40rpx" /> {{ item.commentNum }}</view>
+            </view>
+          </view>
+        </view>
+      </van-cell>
+    </van-tab>
+    <!-- <van-tab title="火热书评" name="c">
+       <van-cell
+        wx:for="{{hotCommentLists}}" 
+        title="小熊ing书"
+        icon="user-circle-o" 
+        use-label-slot wx:key="*this">
         <view slot="label" class="cell-slot">
           <text class="text"> 提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商</text>
           <view class="coment-footer">
@@ -91,20 +166,63 @@
           </view>
         </view>
       </van-cell>
-    </van-tab>
-    <van-tab title="火热书评" name="c">
-       <van-cell wx:for="[1,1,1,1,1]" title="小熊ing书" icon="user-circle-o" use-label-slot wx:key="*this">
-        <view slot="label" class="cell-slot">
-          <text class="text"> 提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商城提供多样店铺模板，快速搭建网上商</text>
-          <view class="coment-footer">
-            <text class="publish-text ">发表于：2020-03-08 12：45</text>
-            <view class="right">
-              <view class="icon" style="margin-right:20rpx"><van-icon color="#ff976a" style="margin-right:10rpx" name="thumb-circle" size="40rpx"/> 1212</view>
-              <view class="icon" style="margin-right:20rpx"><van-icon color="#07c160" style="margin-right:10rpx" name="comment-circle" size="40rpx" /> 4545</view>
-            </view>
-          </view>
-        </view>
-      </van-cell>
-    </van-tab>
+    </van-tab> -->
   </van-tabs>
+  <!-- 评分以及发表读后感弹窗 -->
+  <van-overlay show="{{ show }}" data-bookid="{{ bookDetailMsg._id }}" bind:click="hidePublishThought">
+    <view class="wrapper">
+      <view class="block" catch:tap="noop" >
+        <view class="rate-btn">发表书籍读后感</view>
+        <view class="rate-wrap">
+          <text class="rate-text">评分</text>
+          <van-rate
+          value="{{ point}}"
+          icon="like"
+          void-icon="like-o"
+          bind:change="setPoint"/>
+        </view>
+        <textarea
+          maxlength="{{-1}}"
+          class="text-area"
+          value="{{thoughtContent}}"
+          data-bookid="{{ bookDetailMsg._id }}"
+          placeholder-style="color：green;"
+          placeholder="为该书籍发表自己的读后感"
+          bindinput="settingThought"/>
+        <button
+          type="primary"
+          class="publish-btn"
+          data-bookid="{{ bookDetailMsg._id }}"
+          bindtap="publishThought">发表</button>
+      </view>
+    </view>
+  </van-overlay>
+  <!-- 评分以及发表读后感弹窗 -->
+  <van-overlay show="{{ commentShow }}" data-bookid="{{ bookDetailMsg._id }}"  bind:click="commentHide">
+    <view class="wrapper">
+      <view class="block" catch:tap="noop" >
+        <view class="rate-btn">发表书籍评价</view>
+        <view class="rate-wrap">
+          <!-- <text class="rate-text">评分</text>
+          <van-rate
+          value="{{ 5 }}"
+          icon="like"
+          void-icon="like-o"
+          bind:change="onChange"/> -->
+        </view>
+        <textarea
+          maxlength="{{-1}}"
+          class="text-area"
+          value="{{appraisalContent}}"
+          placeholder-style="color：green;"
+          placeholder="为该书籍发表书评"
+          bindinput="settingAppraisal"/>
+        <button
+          type="primary"  
+          data-bookid="{{ bookDetailMsg._id }}"  
+          bindtap="publishComment"
+          class="publish-btn">发表</button>
+      </view>
+    </view>
+  </van-overlay>
 </view>

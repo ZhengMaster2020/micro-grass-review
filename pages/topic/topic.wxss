@@ -1,1 +1,71 @@
 /* pages/topic/topic.wxss */
+.topic .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid rgba(134, 202, 117, 0.651);
+  padding: 0 40rpx;
+}
+.topic .wrap .book-type {
+  display: block;
+  padding: 20rpx;
+}
+
+.topic .book-wrap {
+  margin-top: 20rpx;
+  display: flex;
+  border: 2rpx solid #f5f5f5;
+}
+.topic .book-wrap .num {
+  display: flex;
+  width: 50rpx;
+  background: #07c160;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20rpx;
+}
+.topic .book-wrap .num1{
+  background: #ee0a24 !important;
+}
+.topic .book-wrap .num2{
+  background: #ff976a;
+}
+.topic .book-wrap .num3{
+  background: rgb(238, 238, 26);
+}
+.topic .book-wrap .content {
+  display: flex;
+  background: #fff;
+  margin-right: 20rpx;
+  width: 100%;
+  height: 100%;
+}
+.topic .book-wrap .content .detail {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+.content .detail .title {
+  display: block;
+}
+.content .detail .intro {
+  line-height: 1.5;
+  padding: 10rpx 0;
+  display: -webkit-box;
+  color: #333;
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient:vertical;
+}
+.content .detail .author {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.content .detail .author .name {
+  color: #777;
+  font-size: 20rpx;
+}

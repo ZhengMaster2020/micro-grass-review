@@ -1,14 +1,14 @@
 <!--pages/about/about.wxml-->
 <view class="header-about">
-  <button wx:if="{{!isLogin}}" class="btn-login" bindtap="login">登  录</button>
+  <button  wx:if="{{!isLogin}}" open-type="getUserInfo" class="btn-login" bindgetuserinfo="login" >登  录</button>
   <view class="login" wx:else>
     <van-image
       round
       width="5rem"
       height="5rem"
-      src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1586544079829&di=cdce3d75a27527d8a9eff06334a7b43f&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F19%2F20180819213054_4Pt8G.jpeg"
+      src="{{ userInfo.avatarUrl }}"
     />
-    <text>中国移不动</text>
+    <text>{{ userInfo.nickName }}</text>
   </view>
   <van-button bindtap="logout" wx:if="{{isLogin}}" class="exit-btn" size="mini" icon="peer-pay" plain type="primary">退出</van-button>
 </view>
@@ -20,28 +20,28 @@
   <view>
 
     <view class="bookmsg book-analysis">
-       <text>读书分析</text>
-       <view>
+       <text>书籍交流</text>
+       <view bindtap="toMyBookReview">
         <image src="../../images/icon/shuji.png" class="left-icon"></image>
-        <text>120 评过</text>
+        <text>{{totalCount}} 评过</text>
         <image src="../../images/icon/you.png" class="right-arrow"></image>
        </view>
     </view>
 
-     <view class="bookmsg">
+    <view class="bookmsg">
        <text>书籍收藏</text>
-       <view>
+       <view bindtap="toMyBookCollect">
         <image src="../../images/icon/shoucang.png" class="left-icon"></image>
-        <text>你收藏了 12 本书</text>
+        <text>你收藏了 {{ collectionCount }} 本书</text>
          <image src="../../images/icon/you.png" class="right-arrow"></image>
        </view>
     </view>
 
-      <view class="bookmsg">
+    <view class="bookmsg">
        <text>最近浏览</text>
-       <view>
+       <view bindtap="toMyBookHistory">
         <image src="../../images/icon/liulan.png" class="left-icon" ></image>
-        <text>记录最近浏览 20 条记录</text>
+        <text>可浏览最近浏览的 20 条记录</text>
         <image src="../../images/icon/you.png" class="right-arrow"></image>
        </view>
     </view>

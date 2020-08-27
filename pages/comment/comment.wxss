@@ -36,10 +36,11 @@
 }
 
 .comment .comment-text {
-  font-size: 32rpx;
+  font-size: 28rpx;
   margin-top: 40rpx;
-  line-height: 1.5;
+  line-height: 2;
   margin: 0 20rpx;
+  color: #969799;
 }
 .comment .comment-time {
   margin: 30rpx;

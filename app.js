@@ -1,6 +1,11 @@
-// app.js
 App({
   onLaunch(options) {
+    // 云开发环境初始化
+    wx.cloud.init({
+      env: 'book-review-2020-v0u22'
+    })
+    const that = this
+    // 微信版本判断
     if (wx.nextTick) {
       wx.nextTick()
     } else {
@@ -10,69 +15,52 @@ App({
         content: '当前微信版本过低，无法使用该功能，请升级到最新微信版本后重试。'
       })
     }
-    wx.getSystemInfo({
-      success(res) {
-      // console.log(res.model)
-      // console.log(res.pixelRatio)
-      // console.log(res.windowWidth)
-      // console.log(res.windowHeight)
-      // console.log(res.language)
-      // console.log(res.version)
-      // console.log(res.platform)
-        // wx.showModal({
-        //   title: 'SDKVersion Version',
-        //   showCancel: false,
-        //   content: `${res.SDKVersion} — ${res.version}`
-        // })
-      console.log(res.SDKVersion, 'SDKVersion')
-      }
-    })
-  },
-  onShow(options) {
-    // Do something when show.
-  },
-  onHide() {
-    // Do something when hide.
-  },
-  onError(msg) {
-    console.log(msg)
-  },
-  globalData: 'I am global data'
+    // 获取缓存中的授权登录标识
+    let auth = wx.getStorageSync('auth') || false
+    console.log(auth, 'auth')
+    // 如果没有授权登录则让用户授权
+    if (!auth) {
+      wx.showModal({
+        title: '微信授权登录',
+        content: '青春活力书友会申请获取您的公开信息（昵称、头像等）',
+        confirmText: '允许',
+        cancelText: '拒绝',
+        success(res) {
+          if (res.confirm) {
+            wx.getSetting({
+              success(res) {
+                const authFlag = res.authSetting['scope.userInfo']
+                if (authFlag) {
+                  wx.setStorage({ key: 'auth', data: authFlag })
+                  wx.getUserInfo({
+                    success(res) {
+                      const { userInfo } = res
+                      wx.cloud.callFunction({
+                        name: 'updateUserInfo',
+                        data: userInfo
+                      }).then(res => {
+                        consol.log(res, 'res')
+                      })
+                      .catch(err => {
+                        console.log('err', err)
+                      })
+                      wx.setStorage({
+                        key: 'userInfo',
+                        data: { userInfo, 'isLogin': true },
+                      })
+                    }
+                  })
+                }
+              }
+            })
 
-  // onLaunch: function () {
-    // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
-
-    // 登录
-  //   wx.login({
-  //     success: res => {
-  //       // 发送 res.code 到后台换取 openId, sessionKey, unionId
-  //     }
-  //   })
-  //   // 获取用户信息
-  //   wx.getSetting({
-  //     success: res => {
-  //       if (res.authSetting['scope.userInfo']) {
-  //         // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-  //         wx.getUserInfo({
-  //           success: res => {
-  //             // 可以将 res 发送给后台解码出 unionId
-  //             this.globalData.userInfo = res.userInfo
-
-  //             // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-  //             // 所以此处加入 callback 以防止这种情况
-  //             if (this.userInfoReadyCallback) {
-  //               this.userInfoReadyCallback(res)
-  //             }
-  //           }
-  //         })
-  //       }
-  //     }
-  //   })
-  // },
-  // globalData: {
-  //   userInfo: null
-  // }
+          } else {
+            wx.removeStorage({ key: 'auth' })
+            wx.removeStorage({ key: 'userInfo' })
+          }
+        },
+        
+      })
+    }
+  },
 })

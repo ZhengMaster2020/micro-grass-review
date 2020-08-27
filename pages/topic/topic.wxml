@@ -1,3 +1,43 @@
 <!--pages/topic/topic.wxml-->
-<view>内容专栏页面</view>
-<text>尚未开发</text>
+<view class="topic">
+  <view class="wrap">
+    <text class="book-type">{{title}}</text>
+    <van-dropdown-menu active-color="#1989fa">
+      <van-dropdown-item
+        id="item"
+        title="{{selectType}}" 
+        value="{{initType}}"
+        options="{{bookType}}"
+        bind:change="changeType"/>
+    </van-dropdown-menu>
+  </view>
+  <view class="book-wrap" wx:for="{{bookMsg}}" wx:key="*this">
+    <block  wx:if="{{item.num == 1 }}">
+     <text class="num num1">{{item.num}}</text>
+    </block>
+    <block  wx:elif="{{item.num == 2 }}">
+     <text class="num num2">{{item.num}}</text>
+    </block>
+    <block  wx:elif="{{item.num == 3 }}">
+     <text class="num num3">{{item.num}}</text>
+    </block>
+     <text class="num" wx:else>{{item.num}}</text>
+   
+    <view class="content">
+      <van-image
+        width="80"
+        height="100"
+        lazy-load
+        src="{{item.imgUrl}}"
+      />
+      <view class="detail">
+        <text class="title">{{item.name}}</text>
+        <text class="intro">{{item.intro}}</text>
+        <view class="author">
+          <text class="name">{{item.author}}</text>
+          <van-tag class="tag" plain type="primary">{{item.type}}</van-tag>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

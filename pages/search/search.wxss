@@ -22,3 +22,56 @@
 .ranking .book-name::after {
   border-color: transparent; 
 }
+
+.search-book .result {
+  padding: 20rpx;
+}
+.search-book .result .tips {
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+.tips .num {
+  color: #f40;
+  font-weight: bold;
+}
+.search-book .result .search-result {
+  display: flex;
+  align-items: flex-start;
+  background: #ebedf08a;
+  border-radius: 10rpx;
+  margin-bottom: 20rpx;
+}
+.wrap .title {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  font-weight: bold;
+} 
+.wrap .title .text {
+  display: block;
+  margin-right: 20rpx; 
+}
+.wrap .author {
+  padding: 0 20rpx 20rpx;
+  color: #666;
+  font-size: 28rpx;
+} 
+.wrap .time {
+  padding: 0 20rpx 20rpx;
+  color: #666;
+  font-size: 28rpx;
+} 
+
+.no-data {
+  margin-top: 80rpx;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.no-data .text {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #666;
+}

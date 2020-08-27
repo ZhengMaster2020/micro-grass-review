@@ -1,0 +1,44 @@
+<view class="history">
+<van-index-bar
+  scroll-top="{{ scrollTop }}"
+  index-list="{{ indexList }}"
+>
+  <view wx:for="{{ myHistoryBook }}" wx:key="*this">
+    <van-index-anchor index="{{item.time}}"/>
+    <van-cell wx:for="{{ item.books }}" wx:for-item="list" wx:for-index="idx" wx:key="*this">
+      <view slot="title" class="slot-title">
+        <van-image
+          data-bookid="{{list._id}}"
+          bindtap="toBookDetail"
+          width="5rem"
+          height="6rem"
+          src="{{ list.avatarUrl }}"/>
+        <view data-bookid="{{list._id}}" bindtap="toBookDetail" class="content-wrap">
+          <text class="name">{{ list.bookName }}</text>
+          <text class="author">{{ list.author }}/{{ list.publishAddr }}/{{ list.publishTime }}</text>
+          <view class="rate">
+            <van-rate
+              allow-half
+              readonly
+              size="12px"
+              gutter="1px"
+              value="{{ list.starCount }}"
+            />
+            <text class="num">{{ list.starCount * 2 > 10 ? '10': list.starCount * 2 }} 分</text>
+          </view>
+          <text class="remark" wx:if="{{item.collectContent}}">{{ item.collectContent }}</text>
+        </view>
+        <view class="cancel-collect" data-flag="{{ list.collectBookFlag }}" data-bookid="{{ list._id }}" bindtap="cancelCollection">
+          <van-rate
+            value="{{ list.collectBookFlag }}"
+            count="{{ 1 }}"
+            void-color="#ffd21e"
+            bind:change="onChange"
+          />
+          <text class="cancel">取消</text>
+        </view>
+      </view>
+    </van-cell>
+  </view>
+</van-index-bar>
+</view>

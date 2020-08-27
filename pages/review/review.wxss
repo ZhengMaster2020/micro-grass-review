@@ -1,0 +1,70 @@
+.history .slot-title {
+  display: flex;
+}
+.slot-title .content-wrap {
+  margin: 0 40rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 86%;
+
+}
+.slot-title .content-wrap .name {
+  display: block;
+  color: #666;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+.slot-title .content-wrap .author {
+  font-size: 24rpx;
+  color: #ccc;
+  padding-right: 20rpx;
+  display: block;
+  /* background: #ffd21e; */
+  width: 100%;
+  white-space: normal;
+}
+
+.content-wrap .rate {
+  display: flex;
+  align-items: center;
+}
+.content-wrap .rate .num {
+  font-size: 24rpx;
+  color: #ccc;
+  margin: 0 10rpx;
+}
+.content-wrap .remark {
+  display: block;
+  color: #ccc;
+  font-size: 24rpx;
+  padding: 6rpx;
+  padding-left: 10rpx;
+  line-height: 30rpx;
+  width: 80%;
+  border-left: 4rpx solid #ffd21e;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+}
+
+.slot-title .cancel-collect {
+  display: flex;
+  flex-direction: column;
+  font-size: 22rpx;
+  justify-content: center;
+  align-items: center;
+  border-left: 3rpx dotted #ccc;
+  padding-left: 10rpx;
+}
+.cancel-collect .cancel {
+  margin-top: -20rpx;
+  font-size: 20rpx;
+  padding: 20rpx;
+  margin-left: 10rpx;
+  border-radius: 10rpx;
+  background: rgba(8, 143, 8, 0.733);
+  color: #fff;
+}
